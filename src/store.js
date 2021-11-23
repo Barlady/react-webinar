@@ -1,3 +1,5 @@
+
+
 class Store {
   constructor(initState) {
     // Состояние приложения (данные)
@@ -47,11 +49,13 @@ class Store {
    * Создание записи
    */
   createItem() {
+    // const count = 0;
     const code = Math.max(0, ...this.state.items.map(item => item.code)) + 1;
     this.setState({
       items: this.state.items.concat({
         code,
-        title: 'Новая запись №'+code
+        title: 'Новая запись №' + code,
+        count: 0
       })
     });
   }
@@ -73,13 +77,27 @@ class Store {
   selectItem(code) {
     this.setState({
       items: this.state.items.map(item => {
-        if (item.code === code){
+        if (item.code === code) {
           item.selected = !item.selected;
         }
         return item;
       })
     });
   }
+
+
+  selectTitle(code) {
+    this.setState({
+      items: this.state.items.map(item => {
+        if (item.code === code) {
+          item.count = item.count + 1;
+        }
+        return item;
+      })
+    });
+  }
+
+
 }
 
 export default Store;
