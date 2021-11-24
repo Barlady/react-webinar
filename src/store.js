@@ -80,6 +80,8 @@ class Store {
         if (item.code === code) {
           item.count = item.count + 1;
           item.selected = !item.selected;
+        } else {
+          item.count = 0;
         }
         return item;
       })
