@@ -9,7 +9,6 @@ import Modal from "./components/modal";
  * @param store {Store} Состояние с действиями
  */
 function App({ store }) {
-  // console.log('App');
 
   const [modalActive, setModalActive] = useState(false);
   const [cartItems, setCartItems] = useState([]);
@@ -27,16 +26,16 @@ function App({ store }) {
   }
 
   const addItem = (item) => {
-    const index = cartItems.findIndex(x => x.code === item.code);
-    if (cartItems[index] !== undefined) {
-      cartItems[index].count++;
+    const exist = cartItems.find(x => x.code === item.code);
+    if (exist) {
       setCartItems(
-        [...cartItems]
+        cartItems.map((x) =>
+          x.code === item.code ? { ...exist, count: exist.count + 1 } : x
+        )
       );
     } else {
       setCartItems([...cartItems, { ...item, count: 1 }])
     }
-
   }
 
   return (

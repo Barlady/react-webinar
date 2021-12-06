@@ -16,8 +16,6 @@ const store = new Store({
     { code: 6, title: 'Пример названия', price: 1005 },
     { code: 7, title: 'Седьмой', price: 1034 }
   ]
-  // cartItems: []
-
 });
 
 // Сообщаем реакту что и куда рендерить.
